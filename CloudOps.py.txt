@@ -1,0 +1,27 @@
+This is for Python 2
+
+import urllib2
+for url in ["https://www.learningcontainer.com/wp-content/uploads/2020/04/sample-text-file.txt"]:
+    try:
+        connection = urllib2.urlopen(url)
+        print connection.getcode()
+        connection.close()
+    except urllib2.HTTPError, e:
+        print e.getcode()
+
+This one is for request only
+
+import requests
+try:
+    r = requests.head("https://www.learningcontainer.com/wp-content/uploads/2020/04/sample-text-file.txt")
+    print(r.status_code)
+    
+except requests.ConnectionError:
+    print("failed to connect")
+
+This will be a script that can be run within docker container as well after docker-compose.yaml has been executed and containers running.
+
+
+
+
+
